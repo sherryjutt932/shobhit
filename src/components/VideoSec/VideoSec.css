@@ -1,0 +1,14 @@
+.VideoSec{
+    background-color: #212125;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.VideoSec .videoRef{
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}

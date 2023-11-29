@@ -1,0 +1,86 @@
+header{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+header .bgslider{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    background: #212125;
+}
+
+header .animimg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 0;
+    width: 100%;
+}
+
+header .animimg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+header .animimg .headertext{
+    position: absolute;
+    bottom: 0px;
+    left: -50px;
+    right: -50px;
+    padding-bottom: 30px;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+header .animimg .headertext h2{
+    font-size: max(2rem, 7vw);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+header .animimg .headertext .controls{
+    display: flex;
+    overflow-y: hidden;
+    justify-content: space-between;
+}
+
+header .animimg .headertext .controls button{
+    outline: none;
+    cursor: pointer;
+    border-radius: 200px;
+}
+
+header .animimg .headertext .controls button.label{
+    background-color: #338895;
+    padding: 20px 40px;
+    color: #fff;
+    border: none;
+
+}
+
+header .animimg .headertext .controls > span{
+    display: flex;
+    overflow-y: hidden;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+header .animimg .headertext .controls button.arrows{
+    background-color: #ffffff20;
+    border: 1px solid #fff;
+    width: 55px;
+    height: 55px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
