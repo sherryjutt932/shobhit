@@ -13,19 +13,20 @@ export default function VideoSec() {
   const servicesHead = useRef();
 
   // useEffect(() => {
-  // 	gsap.to(servicesWrap.current.children, {
-  //         xPercent: -100 * (servicesWrap.current.children.length-1),
-  //         ease: "none",
-  //         scrollTrigger: {
-  //             trigger: servicesWrap.current,
-  //             start:"top top",
-  //             pin: true,
-  //             scrub: 1,
-  //             snap: 1 / (servicesWrap.current.children.length-1),
-  //             end: () => `+=${servicesWrap.current.offsetWidth}`
-  //         }
-  //     });
+  //   var myText = new SplitType(servicesHead.current, {
+  //     types: "lines, words, chars",
+  //   });
 
+  //   gsap.from(myText.chars, {
+  //     opacity: 0,
+  //     ease: "power2.out",
+  //     scrollTrigger: {
+  //       trigger: servicesWrap.current,
+  //       start: "top 10%",
+  //       end: "+=200",
+  //       scrub: true,
+  //     },
+  //   });
   // }, []);
 
   useEffect(() => {
@@ -33,36 +34,29 @@ export default function VideoSec() {
       types: "lines, words, chars",
     });
 
-    gsap.from(myText.chars, {
-      opacity: 0,
-      // rotateX:90,
-      // stagger: 0.05,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: servicesWrap.current,
-        start: "top 10%",
-        end: "+=200",
-        scrub: true,
-      },
-    });
-  }, []);
-
-  useEffect(() => {
     const serviceTL = gsap.timeline();
     serviceTL
       .to(
-        servicesSec.current,
+        servicesSec.current,0.1,
         {
           backgroundColor: "#000",
         },
         "a"
       )
       .to(
-        servicesHead.current,
+        servicesHead.current,0.1,
         {
           color: "#fff",
         },
         "a"
+      )
+      .from(
+        myText.chars,
+        {
+          duration:0.2,
+          opacity: 0,
+          ease: "power2.out",
+        }
       )
       .fromTo(
         servicesWrap.current,
@@ -81,7 +75,7 @@ export default function VideoSec() {
       start: "top top",
       pin: true,
       scrub: true,
-      end: () => `+=${servicesWrap.current.offsetWidth}`,
+      end: () => `+=${servicesWrap.current.offsetWidth*0.6}`,
       animation: serviceTL,
     });
   }, []);

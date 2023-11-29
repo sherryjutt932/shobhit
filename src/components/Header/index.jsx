@@ -10,6 +10,7 @@ export default function Header() {
   const bgslider = useRef();
   const textRef = useRef();
   const controlsRef = useRef();
+  const navRef = useRef();
   const headerText = useRef();
 
 
@@ -27,6 +28,9 @@ export default function Header() {
       gsap.set(controlsRef.current.children, {
         yPercent: 100,
       });
+      gsap.set(navRef.current.children, {
+        yPercent: -200,
+      });
       gsap.set(headerText.current, {
         opacity:1,
       });
@@ -40,7 +44,7 @@ export default function Header() {
           height: 0,
         },
         {
-          height: "calc(100vh - 300px)",
+          height: "calc(100vh - 200px)",
           ease: "power2.inOut",
         }
       )
@@ -51,7 +55,7 @@ export default function Header() {
           width: "100%",
         },
         {
-          width: "calc(100% - 300px)",
+          width: "calc(100% - 320px)",
           ease: "power2.inOut",
         },
         "a"
@@ -84,10 +88,11 @@ export default function Header() {
         },
         {
             yPercent: 0,
-            stagger: 0.05,
+            delay:0.5,
+            stagger: 0.02,
             ease: "power2.out",
           },
-        "-=.5"
+        "a"
       )
       .fromTo(
         controlsRef.current.children,
@@ -96,15 +101,36 @@ export default function Header() {
         },
         {
           yPercent: 0,
+          delay:0.5,
           stagger: 0.3,
           ease: "power2.out",
         },
-        "-=.5"
+        "a"
+      )
+      .fromTo(
+        navRef.current.children,
+        {
+          yPercent: -200,
+        },
+        {
+          yPercent: 0,
+          delay:0.6,
+          ease: "power2.out",
+        },
+        "a"
       );
   });
 
   return (
     <header>
+      <nav ref={navRef}>
+        <div className="logo">FLY MEDIA</div>
+        <ul className="space">
+          <li>About</li>
+          <li>Work</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
       <div ref={bgslider} className="bgslider"></div>
       <div ref={imgCon} className="animimg">
         <img ref={imgRef} src={headerImg} alt="" />
@@ -116,6 +142,13 @@ export default function Header() {
           </h2>
           <div ref={controlsRef} className="controls">
             <button className="label space">Get in touch</button>
+            <div className="dots">
+              <button data-index="1"  className="active"></button>
+              <button data-index="2" ></button>
+              <button data-index="3" ></button>
+              <button data-index="4" ></button>
+              <button data-index="5" ></button>
+            </div>
             <span>
               <button className="arrows">
                 <svg

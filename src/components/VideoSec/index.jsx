@@ -13,8 +13,8 @@ export default function VideoSec() {
 
   useEffect(() => {
     gsap.to(videoRef.current, {
-      width:"calc(100% - 300px)",
-      height:"calc(100vh - 200px)",
+      width:"100%",
+      height:"100%",
       scrollTrigger: {
         trigger: videoSec.current,
         start: "top 80%",
@@ -30,9 +30,10 @@ export default function VideoSec() {
       ref={videoRef}
         src={videosrc}
         className="videoRef"
-        autoPlay ={false}
+        autoPlay ={true}
         muted ={true}
-        controls={true}
+        loop={true}
+        controls={false}
       ></video>
     </section>
   );
