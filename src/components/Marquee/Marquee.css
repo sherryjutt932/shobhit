@@ -25,7 +25,7 @@
     flex-wrap: nowrap;
     align-items: center;
     position: absolute;
-    left: -100%;
+    left: 100%;
     top: 0%;
 }
 

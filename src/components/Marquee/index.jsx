@@ -35,23 +35,23 @@ export default function Marquee({ direction, speed, ...props }) {
     }
   }, [direction]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      // On resize, reposition the second div based on the first div's width
-      gsap.set(second.current, { left: first.current.offsetWidth });
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     // On resize, reposition the second div based on the first div's width
+  //     gsap.set(second.current, { left: first.current.offsetWidth });
+  //   };
 
-    // Attach the event listener for resize
-    window.addEventListener("resize", handleResize);
+  //   // Attach the event listener for resize
+  //   window.addEventListener("resize", handleResize);
 
-    // Initial setup
-    gsap.set(second.current, { left: first.current.offsetWidth });
+  //   // Initial setup
+  //   gsap.set(second.current, { left: first.current.offsetWidth });
 
-    // Cleanup on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   // Cleanup on component unmount
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <section className="marqueeSec bigShoulder">
