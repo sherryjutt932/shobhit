@@ -75,7 +75,7 @@ export default function VideoSec() {
       start: "top top",
       pin: true,
       scrub: true,
-      end: () => `+=${servicesWrap.current.offsetWidth*0.6}`,
+      end: () => `+=${servicesWrap.current.offsetWidth}`,
       animation: serviceTL,
     });
   }, []);

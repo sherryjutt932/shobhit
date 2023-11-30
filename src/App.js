@@ -3,6 +3,11 @@ import Lenis from '@studio-freight/lenis'
 import Header from './components/Header';
 import VideoSec from './components/VideoSec';
 import Services from './components/Services';
+import Work from './components/Work';
+import Logos from './components/Logos';
+import Marquee from './components/Marquee';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 
 // Register ScrollTrigger with GSAP
@@ -21,15 +26,6 @@ function App() {
     })
 
     gsap.ticker.lagSmoothing(0)
-
-    // const lenis = new Lenis()
-
-    // function raf(time) {
-    //   lenis.raf(time)
-    //   requestAnimationFrame(raf)
-    // }
-
-    // requestAnimationFrame(raf)
   
   })
   
@@ -39,7 +35,11 @@ function App() {
       <Header/>
       <VideoSec/>
       <Services/>
-      <div style={{minHeight:"100vh"}}></div>
+      <Work/>
+      <Logos/>
+      <Marquee direction={"left"} speed={.5}/>
+      <Contact/>
+      <Footer/>
     </div>
   );
 }

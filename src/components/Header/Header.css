@@ -3,6 +3,7 @@ header{
     height: 100vh;
     overflow: hidden;
     position: relative;
+    background-color: #fff;
 }
 
 header nav{
@@ -49,11 +50,23 @@ header .animimg{
     width: 100%;
 }
 
-header .animimg img{
+header .animimg .imageslider{
     height: 100%;
     width: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+header .animimg .imageslider img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
 }
+
 header .animimg .headertext{
     position: absolute;
     bottom: 0px;
@@ -96,7 +109,7 @@ header .animimg .headertext .controls .dots button{
 }
 
 header .animimg .headertext .controls .dots button.active{
-    background-color: #ffffff90;
+    background-color: #ffffff;
 }
 
 header .animimg .headertext .controls button{
