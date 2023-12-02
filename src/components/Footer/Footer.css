@@ -1,10 +1,20 @@
 footer{
     background-color: #000;
+    
+    padding: 80px 140px;
+    padding-bottom:20px;
+    color: #fff;
+}
+
+footer .content{
     display: flex;
     justify-content: space-between;
-    padding: 140px;
-    padding-bottom: 80px;
-    color: #fff;
+}
+
+footer .copyright{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
 }
 
 footer .right,
@@ -18,7 +28,7 @@ footer .left .logo{
     padding-bottom: 40px;
 }
 
-footer .left p{
+footer p{
     font-size: 18px;
     line-height: 28px;
     color: #d1d1d1;
@@ -35,17 +45,18 @@ footer .right{
     gap: 60px;
 }
 
-footer .right > div{
+footer div.socials{
     display: flex;
+    padding-top: 20px;
     gap: 20px;
 }
 
-footer .right > div svg{
+footer div.socials svg{
     font-size: 22px;
     color: #d1d1d1;
 }
 
-footer .right > div svg:hover{
+footer div.socials svg:hover{
     color: #43a4b1;
 }
 

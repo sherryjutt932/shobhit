@@ -14,7 +14,8 @@
 
 .ServicesSec .Serviceswrapper > div{
     display: flex;
-    width: 50vw;
+    width: fit-content;
+    padding-right: 100px;
     height: 100vh;
     color: #fff;
     align-items: center;

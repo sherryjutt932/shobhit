@@ -8,8 +8,23 @@ import videography from "../../assets/images/image1.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+  const contactSec = useRef();
+  
+  useEffect(() => {
+    gsap.to(contactSec.current, {
+      opacity:1,
+      scrollTrigger: {
+        trigger: contactSec.current,
+        start: "top top",
+        end: "+=1000",
+        pin:true,
+        scrub: true,
+    },
+    });
+  }, []);
+
   return (
-    <section className='ContactSec'>
+    <section ref={contactSec} className='ContactSec'>
         <div className="heading">
           <h2 className="bigShoulder">Discuss the solution<br />you need.</h2>
         </div>

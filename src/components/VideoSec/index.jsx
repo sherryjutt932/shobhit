@@ -22,6 +22,17 @@ export default function VideoSec() {
         scrub: true,
     },
     });
+    
+    gsap.to(videoRef.current, {
+      opacity:1,
+      scrollTrigger: {
+        trigger: videoSec.current,
+        start: "top top",
+        end: "+=1000",
+        pin:true,
+        scrub: true,
+    },
+    });
   }, []);
 
   return (

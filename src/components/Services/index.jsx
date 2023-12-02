@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Service.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,9 +8,12 @@ import videography from "../../assets/images/image1.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoSec() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const servicesSec = useRef();
   const servicesWrap = useRef();
   const servicesHead = useRef();
+  const servicesCard = useRef();
+
 
   // useEffect(() => {
   //   var myText = new SplitType(servicesHead.current, {
@@ -34,15 +37,19 @@ export default function VideoSec() {
       types: "lines, words, chars",
     });
 
+      gsap.to(servicesSec.current, {
+        backgroundColor: "#000",
+      ease: "none",
+      scrollTrigger: {
+        trigger: servicesSec.current,
+        start: "top 90%",
+        end: "top top",
+        scrub: true,
+      },
+    });
+
     const serviceTL = gsap.timeline();
     serviceTL
-      .to(
-        servicesSec.current,0.1,
-        {
-          backgroundColor: "#000",
-        },
-        "a"
-      )
       .to(
         servicesHead.current,0.1,
         {
@@ -58,6 +65,12 @@ export default function VideoSec() {
           ease: "power2.out",
         }
       )
+      .from(
+        servicesHead.current,0.1,
+        {
+          filter: "blur(20px)",
+        },
+      )
       .fromTo(
         servicesWrap.current,
         {
@@ -65,7 +78,7 @@ export default function VideoSec() {
           ease: "none",
         },
         {
-          x: "-75%",
+          x: -((servicesCard.current.offsetWidth*(servicesWrap.current.children.length - 1)) +  windowWidth * 0.3),
           ease: "none",
         }
       );
@@ -91,7 +104,7 @@ export default function VideoSec() {
             Services{" "}
           </h2>
         </div>
-        <div className="card">
+        <div ref={servicesCard} className="card">
           <h3 className="space">Videography</h3>
           <img src={videography} alt="" />
         </div>

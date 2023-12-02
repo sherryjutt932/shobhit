@@ -209,7 +209,7 @@ export default function Header() {
         <div ref={headerText} className="headertext">
           <h2>
             <div ref={textRef} className="bigShoulder">
-              GET YOUR BRANCH A VISION
+              GET YOUR BRAND A VISION
             </div>
           </h2>
           <div ref={controlsRef} className="controls">

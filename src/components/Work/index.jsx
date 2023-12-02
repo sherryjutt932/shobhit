@@ -32,6 +32,7 @@ const ImagePopup = ({ imageUrl, onClose }) => {
 
 export default function Work() {
   const imageRowRef = useRef();
+  const imageRowRef2 = useRef();
   const imageRowRefR = useRef();
   const SecRef = useRef();
   const [popupImageUrl, setPopupImageUrl] = useState(null);
@@ -49,7 +50,7 @@ export default function Work() {
 
     const workTL = gsap.timeline();
     workTL.fromTo(
-      imageRowRef.current,
+      [imageRowRef.current, imageRowRef2.current],
         {
           xPercent: -15,
           ease: "none",
@@ -108,6 +109,17 @@ export default function Work() {
                ></img>
             ))}
     </div>
+    <div className="imageRow" ref={imageRowRef2}>
+    {ImagesArray.map((src, index) => (
+               <img 
+               onClick={() => openPopup(src)}
+               key={index} 
+               alt="" 
+               src={src}
+               ></img>
+            ))}
+    </div>
+
     {popupImageUrl && <ImagePopup imageUrl={popupImageUrl} onClose={closePopup} />}
     </section>
   )

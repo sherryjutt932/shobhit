@@ -5,7 +5,7 @@
     align-items: center;
     overflow: hidden;
     padding: 24px 0;
-    background: #fff;
+    background: #338895;
 }
 
 .marqueeSec .marqueeCon{
@@ -34,7 +34,7 @@
     flex-shrink: 0;
     display: flex;
     justify-content: center;
-    color: #000;
+    color: #fff;
     align-items: center;
     font-size: 34px;
     white-space: nowrap;
@@ -42,7 +42,7 @@
 
 .marqueeSec .marqueeCon .marqueeDiv > div > span,
 .marqueeSec .marqueeCon .marqueeDiv2 > div > span{
-    color: #00000050;
+    color: #ffffff50;
     padding: 0 25px;
     font-size: 25px;
 }

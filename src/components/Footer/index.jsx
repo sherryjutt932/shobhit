@@ -10,14 +10,19 @@ import { FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="space">
+        <div className="content">
         <div className="left">
             <div>
             <img  className="logo" src={Logo} alt="" />
             <p>info@flymediaco.com</p>
             <p>Tel: (470)-365-1514</p>
+            <div className="socials">
+                <a href="/"><FaSquareFacebook/></a>
+                <a href="/"><FaLinkedinIn /></a>
+                <a href="/"><FaInstagram /></a>
+            </div>
             </div>
 
-            <p>© 2023 FLY MEDIA | Privacy</p>
         </div>
         <div className="right">
             <ul>
@@ -25,16 +30,12 @@ export default function Footer() {
                 <li><a href="/Home">Videography</a></li>
                 <li><a href="/Home">photography</a></li>
                 <li><a href="/Home">web design</a></li>
-                <li><a href="/Home">blog</a></li>
                 <li><a href="/Home">contact</a></li>
             </ul>
-
-            <div>
-                <a href="/"><FaSquareFacebook/></a>
-                <a href="/"><FaLinkedinIn /></a>
-                <a href="/"><FaInstagram /></a>
-            </div>
         </div>
+        </div>
+        <p className="copyright">© 2023 FLY MEDIA | Privacy</p>
+
     </footer>
   )
 }
