@@ -70,3 +70,51 @@ width: 100%;
 .ContactSec form input::placeholder{
     color: #000;
 }
+
+@media(max-width: 750px){
+    .ContactSec{
+        padding: 60px 24px;
+    }
+    
+    .ContactSec .heading{
+        padding: 0px 24px;
+        padding-bottom: 60px;
+    }
+    
+    .ContactSec .heading h2{
+        font-size: 3rem;
+    }
+    
+    .ContactSec form{
+    width: 100%;
+    padding: 0 24px;
+    min-width: unset;
+    gap: 40px;
+    }
+    
+    .ContactSec form .double{
+        gap: 40px;
+    }
+    
+    .ContactSec form button.label{
+        padding: 15px 50px;
+    }
+    
+    .ContactSec form textarea,
+    .ContactSec form input{
+        width: 100%;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #000;
+        padding-bottom: 20px;
+        color: #000;
+        font-size: 20px;
+        resize: none;
+    }
+    
+    .ContactSec form textarea::placeholder,
+    .ContactSec form input::placeholder{
+        color: #000;
+    }   
+}

@@ -71,7 +71,7 @@ export default function Work() {
             ease: "none",
           },
           {
-            xPercent: -15,
+            xPercent: -30,
             ease: "none",
           },"a"
         );
@@ -104,7 +104,9 @@ export default function Work() {
                ></img>
             ))}
     </div>
-    <div className="imageRow customScroller" ref={imageRowRefR}>
+    <div className="imageRow customScroller" 
+    style={{width:"135vw"}}
+    ref={imageRowRefR}>
     {ImagesArrayR.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}

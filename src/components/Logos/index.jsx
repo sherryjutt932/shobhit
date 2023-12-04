@@ -25,9 +25,8 @@ export default function Logos() {
 
     <div className="LogosRow">
     {LogosArray.map((src, index) => (
-               <div>
+               <div key={index} >
                 <img 
-               key={index} 
                alt="" 
                src={src}
                ></img>

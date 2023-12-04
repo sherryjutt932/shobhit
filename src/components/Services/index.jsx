@@ -8,12 +8,34 @@ import data from "./Data";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoSec() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const servicesSec = useRef();
   const servicesWrap = useRef();
   const servicesHead = useRef();
-  const servicesCard = useRef();
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  const handleResize = () => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  useEffect(() => {
+    // Set initial window size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // useEffect(() => {
   //   var myText = new SplitType(servicesHead.current, {
@@ -80,7 +102,7 @@ export default function VideoSec() {
           ease: "none",
         },
         {
-          x: -((servicesWrap.current.children[1].offsetWidth*(servicesWrap.current.children.length - 1)) +  windowWidth * 0.3),
+          x: (windowSize>750)? (-((servicesWrap.current.children[1].offsetWidth*(servicesWrap.current.children.length - 1)) +  windowSize.width * 0.3)) : (-((servicesWrap.current.children[1].offsetWidth*(servicesWrap.current.children.length - 1)) - 100)),
           ease: "none",
         }
       );

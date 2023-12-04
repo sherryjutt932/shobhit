@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Lenis from '@studio-freight/lenis'
 import Header from './components/Header';
 import VideoSec from './components/VideoSec';
@@ -27,7 +27,22 @@ function App() {
 
     gsap.ticker.lagSmoothing(0)
   
-  })
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Reload the page on window resize
+      window.location.reload();
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
 
   return (

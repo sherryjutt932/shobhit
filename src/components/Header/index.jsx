@@ -8,12 +8,16 @@ import headerImg2 from "../../assets/images/image2.jpg";
 import headerImg3 from "../../assets/images/image3.jpg";
 import headerImg4 from "../../assets/images/image4.jpg";
 import headerImg5 from "../../assets/images/image5.jpg";
+import headerImg6 from "../../assets/images/image6.jpg";
+import headerImg7 from "../../assets/images/image7.jpg";
 const ImagesArray = [
   headerImg1,
   headerImg2,
   headerImg3,
   headerImg4,
   headerImg5,
+  headerImg6,
+  headerImg7,
 ];
 
 export default function Header() {
@@ -24,8 +28,12 @@ export default function Header() {
   const controlsRef = useRef();
   const navRef = useRef();
   const headerText = useRef();
+  const shadowImgRef = useRef();
+  const nextButton = useRef();
+  const ImageLength = ImagesArray.length;
 
   const [currentSlide, setCurrentSlide] = useState(1);
+  const [prevSlide, setPrevSlide] = useState(1);
   const [headerImages, setHeaderImages] = useState(ImagesArray);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -45,6 +53,7 @@ export default function Header() {
     });
     gsap.set(controlsRef.current.children, {
       yPercent: 100,
+      opacity:0,
     });
     gsap.set(navRef.current.children, {
       yPercent: -200,
@@ -62,7 +71,7 @@ export default function Header() {
           height: 0,
         },
         {
-          height: "calc(100vh - 200px)",
+          height: (window.innerWidth > 750)?"calc(100vh - 200px)":"calc(100vh - 200px)",
           ease: "power2.inOut",
         }
       )
@@ -73,7 +82,7 @@ export default function Header() {
           width: "100%",
         },
         {
-          width: "calc(100% - 320px)",
+          width: (window.innerWidth > 750)?"calc(100% - 320px)":"calc(100% - 48px)",
           ease: "power2.inOut",
         },
         "a"
@@ -116,8 +125,10 @@ export default function Header() {
         controlsRef.current.children,
         {
           yPercent: 100,
+          opacity:0,
         },
         {
+          opacity:1,
           yPercent: 0,
           delay: 0.5,
           stagger: 0.3,
@@ -144,27 +155,33 @@ export default function Header() {
   };
 
   const moveToNextSlide = () => {
-    const nextSlide = currentSlide + 1;
-    if (nextSlide <= 5 && !isAnimating) {
+    const nextSlide =  (currentSlide % ImageLength) + (1);
+    if (!isAnimating) {
       setIsAnimating(true);
-  
       setCurrentSlide(nextSlide);
-      gsap.to(imgRef.current.children, {
-        xPercent: "-=100",
-        onComplete: () => setIsAnimating(false),
+      // setIsAnimating(false);
+      gsap.timeline().from(imgRef.current.children[1], {
+        opacity: 0,
+        onComplete: () => {
+          setIsAnimating(false)
+          setPrevSlide(nextSlide);
+        },
       });
     }
   };
   
   const moveToPreviousSlide = () => {
-    const previousSlide = currentSlide - 1;
-    if (previousSlide >= 1 && !isAnimating) {
+    const previousSlide = (currentSlide == 1)? ImageLength : currentSlide - 1;
+    if (!isAnimating) {
       setIsAnimating(true);
-  
       setCurrentSlide(previousSlide);
-      gsap.to(imgRef.current.children, {
-        xPercent: "+=100",
-        onComplete: () => setIsAnimating(false),
+      // setIsAnimating(false);
+      gsap.timeline().from(imgRef.current.children[1], {
+        opacity: 0,
+        onComplete: () => {
+          setIsAnimating(false)
+          setPrevSlide(previousSlide);
+        },
       });
     }
   };
@@ -174,37 +191,45 @@ export default function Header() {
     var diff = slideNumber - currentSlide;
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentSlide(slideNumber)
-      gsap.to(
-        imgRef.current.children,
-        {
-          xPercent:(diff<=0)?`+=${100*Math.abs(diff)}`:`-=${100*Math.abs(diff)}`,
-          onComplete: () => setIsAnimating(false),
-        }
-      )
+      setCurrentSlide(slideNumber);
+      gsap.timeline().from(imgRef.current.children[1], {
+        opacity: 0,
+        onComplete: () => {
+          setIsAnimating(false);
+          setPrevSlide(slideNumber);
+        },
+      });;
     }
     
   };
-  
+
+  useEffect(() => {
+    const interval01 = setInterval(() => {
+      // Trigger the button click here
+      nextButton.current.click();
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    // Cleanup the timeout on component unmount
+    return () => setInterval(interval01);
+  }, []); 
+
   return (
     <header>
       <nav ref={navRef}>
         <div className="logo">
-          <img src={Logo} alt="logo" />
+          <a href="/"><img src={Logo} alt="logo" /></a>
         </div>
         <ul className="space">
-          <li>About</li>
-          <li>Work</li>
-          <li>Contact</li>
+          <li><a href="/">About</a></li>
+          <li><a href="/">Work</a></li>
+          <li><a href="/">Contact</a></li>
         </ul>
       </nav>
       <div ref={bgslider} className="bgslider"></div>
       <div ref={imgCon} className="animimg">
         <div ref={imgRef} className="imageslider">
-        {headerImages.map((src, index) => (
-               <img key={index} alt="" src={src}></img>
-            ))}
-       
+          <img ref={shadowImgRef} alt="header image" className="shadow" src={headerImages[prevSlide-1]}></img>
+          <img alt="header image" src={headerImages[currentSlide-1]}></img>
         </div>
         <div ref={headerText} className="headertext">
           <h2>
@@ -215,7 +240,7 @@ export default function Header() {
           <div ref={controlsRef} className="controls">
             <button className="label space">Get in touch</button>
             <div className="dots">
-              {Array.from({ length: 5 }, (_, index) => (
+              {Array.from({ length: ImageLength }, (_, index) => (
                 <button
                   key={index}
                   type="button"
@@ -241,7 +266,7 @@ export default function Header() {
                   />
                 </svg>
               </button>
-              <button onClick={() => moveToNextSlide()} className="arrows">
+              <button ref={nextButton} onClick={() => moveToNextSlide()} className="arrows">
                 <svg
                   width="22"
                   height="15"

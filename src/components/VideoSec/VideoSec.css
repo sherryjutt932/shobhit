@@ -12,3 +12,12 @@
     height: calc(100vh - 200px);
     object-fit: cover;
 }
+
+
+@media(max-width: 750px){
+    .VideoSec .videoRef{
+        width: calc(100% - 48px);
+        height: calc(100vh - 48px);
+        object-fit: cover;
+    }   
+}
