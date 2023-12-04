@@ -28,7 +28,7 @@ export default function VideoSec() {
       scrollTrigger: {
         trigger: videoSec.current,
         start: "top top",
-        end: "+=1000",
+        end: "+=500",
         pin:true,
         scrub: true,
     },

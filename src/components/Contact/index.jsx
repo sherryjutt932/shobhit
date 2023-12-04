@@ -16,7 +16,7 @@ export default function Contact() {
       scrollTrigger: {
         trigger: contactSec.current,
         start: "top top",
-        end: "+=1000",
+        end: "+=500",
         pin:true,
         scrub: true,
     },

@@ -11,8 +11,13 @@ const ImagesArray = [
   headerImg1,
   headerImg2,
   headerImg3,
+  headerImg4,
+  headerImg5,
+
 ];
 const ImagesArrayR = [
+  headerImg1,
+  headerImg2,
   headerImg3,
   headerImg4,
   headerImg5,
@@ -89,7 +94,7 @@ export default function Work() {
       <button className="label space">View all</button>
     </div>
 
-    <div className="imageRow" ref={imageRowRef}>
+    <div className="imageRow customScroller" ref={imageRowRef}>
     {ImagesArray.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}
@@ -99,7 +104,7 @@ export default function Work() {
                ></img>
             ))}
     </div>
-    <div className="imageRow" ref={imageRowRefR}>
+    <div className="imageRow customScroller" ref={imageRowRefR}>
     {ImagesArrayR.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}
@@ -109,7 +114,7 @@ export default function Work() {
                ></img>
             ))}
     </div>
-    <div className="imageRow" ref={imageRowRef2}>
+    <div className="imageRow customScroller" ref={imageRowRef2}>
     {ImagesArray.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}

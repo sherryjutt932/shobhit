@@ -3,7 +3,7 @@ import "./Service.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import videography from "../../assets/images/image1.jpg";
+import data from "./Data";
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,13 +63,15 @@ export default function VideoSec() {
           duration:0.2,
           opacity: 0,
           ease: "power2.out",
-        }
+        },
+        "a"
       )
       .from(
         servicesHead.current,0.1,
         {
           filter: "blur(20px)",
         },
+        "a"
       )
       .fromTo(
         servicesWrap.current,
@@ -78,7 +80,7 @@ export default function VideoSec() {
           ease: "none",
         },
         {
-          x: -((servicesCard.current.offsetWidth*(servicesWrap.current.children.length - 1)) +  windowWidth * 0.3),
+          x: -((servicesWrap.current.children[1].offsetWidth*(servicesWrap.current.children.length - 1)) +  windowWidth * 0.3),
           ease: "none",
         }
       );
@@ -104,22 +106,18 @@ export default function VideoSec() {
             Services{" "}
           </h2>
         </div>
-        <div ref={servicesCard} className="card">
-          <h3 className="space">Videography</h3>
-          <img src={videography} alt="" />
-        </div>
-        <div className="card">
-          <h3 className="space">Videography</h3>
-          <img src={videography} alt="" />
-        </div>
-        <div className="card">
-          <h3 className="space">Videography</h3>
-          <img src={videography} alt="" />
-        </div>
-        <div className="card">
-          <h3 className="space">Videography</h3>
-          <img src={videography} alt="" />
-        </div>
+        {
+          data.map((item, i)=>{
+            return(
+              <div key={i} className="card">
+                <h3 className="space">{item.title}</h3>
+                <img src={item.image} alt="" />
+                <p>{item.detail}</p>
+              </div>
+            )
+          })
+        }
+        
       </div>
     </section>
   );

@@ -32,15 +32,16 @@
 .WorkSec .imageRow{
     display: grid;
     /* transform: translateX(-10%); */
-    width: 120%;
+    width: 120vw;
     grid-auto-flow: column;
     gap: 5px;
     margin-bottom: 5px;
+    overflow-x: scroll;
 }
 
 .WorkSec .imageRow img{
     display: block;
-    width: 100%;
+    width: 40vw;
     aspect-ratio: 1.4;
     object-fit: cover;
     cursor: pointer;
