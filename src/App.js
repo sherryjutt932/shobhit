@@ -30,20 +30,41 @@ function App() {
   
   });
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  
   useEffect(() => {
     const handleResize = () => {
-      // Reload the page on window resize
-      window.location.reload();
+      // Check if the width has changed
+      const newWidth = window.innerWidth;
+      if (newWidth !== windowSize.width) {
+        // Reload the page if the width has changed
+        setWindowSize({
+          width: newWidth,
+          height: window.innerHeight,
+        });
+  
+        window.location.reload();
+      } else {
+        // Update the state without reloading if only the height has changed
+        setWindowSize({
+          width: newWidth,
+          height: window.innerHeight,
+        });
+      }
     };
-
+  
     // Add event listener for window resize
     window.addEventListener('resize', handleResize);
-
+  
     // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowSize.width]); // Dependency array now includes windowSize.width
+  
   
 
   return (
