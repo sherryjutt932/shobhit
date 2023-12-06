@@ -8,6 +8,7 @@ import Logos from './components/Logos';
 import Marquee from './components/Marquee';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ColorWheel from './components/colorWheel';
 
 
 // Register ScrollTrigger with GSAP

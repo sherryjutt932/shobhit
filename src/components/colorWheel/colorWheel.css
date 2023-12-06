@@ -1,0 +1,36 @@
+.colorWheelSec{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colorWheelSec .colorWheelCon {
+    position: relative;
+    transform: scale(1);
+    width: 170px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 30px;
+  }
+
+  .colorWheelSec .colorWheelCon .palette{
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border: none;
+    outline: none;
+  }
+  
+  .colorWheelSec .colorWheelCon .palette:hover {
+    box-shadow: 0px 0px 5px 2px #00000060;
+    z-index: 1;
+  }
+  
+  .colorWheelSec .colorWheelCon .palette:focus {
+    box-shadow: 0px 0px 5px 3px #00000090;
+    z-index: 1;
+  }
+  
+  

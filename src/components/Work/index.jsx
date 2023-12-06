@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 import "./Work.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -42,6 +43,10 @@ export default function Work() {
   const SecRef = useRef();
   const [popupImageUrl, setPopupImageUrl] = useState(null);
 
+  const { events } = useDraggable(imageRowRef); 
+  const { events:eventsR } = useDraggable(imageRowRefR); 
+  const { events:events2 } = useDraggable(imageRowRef2); 
+
   const openPopup = (imageSrc) => {
     setPopupImageUrl(imageSrc);
   };
@@ -83,9 +88,7 @@ export default function Work() {
       scrub: true,
       animation: workTL,
     });
-
 }, [])
-
 
   return (
     <section ref={SecRef} className="WorkSec">
@@ -94,7 +97,9 @@ export default function Work() {
       <button className="label space">View all</button>
     </div>
 
-    <div className="imageRow customScroller" ref={imageRowRef}>
+    <div className="imageRow customScroller" 
+    {...events}
+    ref={imageRowRef}>
     {ImagesArray.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}
@@ -106,6 +111,7 @@ export default function Work() {
     </div>
     <div className="imageRow customScroller" 
     style={{width:"135vw"}}
+    {...eventsR}
     ref={imageRowRefR}>
     {ImagesArrayR.map((src, index) => (
                <img 
@@ -116,7 +122,9 @@ export default function Work() {
                ></img>
             ))}
     </div>
-    <div className="imageRow customScroller" ref={imageRowRef2}>
+    <div className="imageRow customScroller" 
+    {...events2}
+    ref={imageRowRef2}>
     {ImagesArray.map((src, index) => (
                <img 
                onClick={() => openPopup(src)}
